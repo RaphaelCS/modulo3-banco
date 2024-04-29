@@ -35,7 +35,7 @@ public abstract class Conta {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cliente_id")
-    private Cliente cliente;
+    private ClientePF cliente;
 
 /*
     public Conta(Cliente cliente)  {

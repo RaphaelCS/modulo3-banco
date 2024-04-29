@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -35,6 +36,7 @@ public class UsuarioService {
 
     public UsuarioDTO salvar(UsuarioDTO usuarioDto) {
         var usuario = this.convertFromDto(usuarioDto);
+        usuario.setUuid(UUID.randomUUID());
         usuario.setPassword(passwordEncoder.encode(usuarioDto.getPassword()));
         usuario.setActive(true);
         var savedUsuario = this.usuarioRepository.save(usuario);

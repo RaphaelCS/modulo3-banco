@@ -15,6 +15,7 @@ public interface InvestirPJImpl extends Investir<ClientePJ> {
 
     @Override
     default ContaInvestimento investir(ClientePJ cliente, ContaCorrente conta, BigDecimal valor) throws ValorInvalidoException, SaldoInsuficienteException {
+       /*
         if(valor.compareTo(BigDecimal.ZERO)<1){
             throw new ValorInvalidoException("Valor menor que zero ou igual a zero");
         }
@@ -23,10 +24,15 @@ public interface InvestirPJImpl extends Investir<ClientePJ> {
         }
         ContaInvestimento contaInvestimento = BancoDadosService.verificarExistenciaContaInvestimento(conta.getCliente());
         if(contaInvestimento==null){
-            //contaInvestimento = new ContaInvestimento(conta.getCliente());
+            contaInvestimento = new ContaInvestimento(conta.getCliente());
         }
         new ContaCorrentePJService().transferir((ClientePJ) conta.getCliente(),conta,valor,contaInvestimento);
         contaInvestimento.setSaldo(contaInvestimento.getSaldo().add(valor.multiply(RENDIMENTO)));
         return contaInvestimento;
+         */
+        return null;
+
     }
+
+
 }

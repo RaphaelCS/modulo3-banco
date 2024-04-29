@@ -20,7 +20,7 @@ public class ContaDTO {
     @NonNull
     private Integer numero;
 
-    @Positive
+    @Positive(message = "Saldo deve ser maior que zero")
     private BigDecimal saldo;
 
     @Positive(message = "Valor deve ser maior que zero")
@@ -30,5 +30,6 @@ public class ContaDTO {
 
     private UUID clienteUuid;
 
-    private Cliente cliente;
+   // private Cliente cliente;
+
 }

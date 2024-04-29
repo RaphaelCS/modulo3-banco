@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public interface ContaRepository<T extends Conta, U extends Cliente> extends JpaRepository<T, Long> {
+public interface ContaRepository extends JpaRepository<ContaCorrente, Long> {
 
-    public Optional<T> findByUuid(UUID uuid);
-    public List<T> findByCliente(Optional<U> cliente);
+    public Optional<ContaCorrente> findByUuid(UUID uuid);
+    public List<ContaCorrente> findByCliente(Optional<ClientePF> cliente);
 }

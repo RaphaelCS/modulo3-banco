@@ -15,5 +15,6 @@ public abstract class Pessoa {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+    @Column(columnDefinition = "UUID", nullable = false)
     private UUID uuid;
 }

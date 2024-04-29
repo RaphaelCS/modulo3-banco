@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public  class BancoDadosService {
+    /*
 
     private static final List<Conta> contaList = new ArrayList<>();
 
@@ -68,4 +69,6 @@ public  class BancoDadosService {
         }
         return contaRetorno.get();
     }
+
+     */
 }

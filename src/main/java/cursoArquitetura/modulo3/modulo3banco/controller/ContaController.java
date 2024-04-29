@@ -36,8 +36,7 @@ public class ContaController {
     }
 
     @PostMapping
-    @PreAuthorize("hasAnyRole(T(cursoArquitetura.modulo3.modulo3banco.usuario.Role).ADMIN.name()," +
-            "T(cursoArquitetura.modulo3.modulo3banco.usuario.Role).FUNCIONARIO.name())")
+    @PreAuthorize("hasAnyRole(T(cursoArquitetura.modulo3.modulo3banco.usuario.Role).ADMIN.name(),T(cursoArquitetura.modulo3.modulo3banco.usuario.Role).FUNCIONARIO.name())")
     public ResponseEntity<ContaDTO> inserir(@Valid @RequestBody ContaDTO contaDTO){
         try {
             return new ResponseEntity<>(service.salvar(contaDTO), HttpStatus.CREATED);
@@ -47,8 +46,7 @@ public class ContaController {
     }
 
     @DeleteMapping("/{uuid}")
-    @PreAuthorize("hasAnyRole(T(cursoArquitetura.modulo3.modulo3banco.usuario.Role).ADMIN.name()," +
-            "T(cursoArquitetura.modulo3.modulo3banco.usuario.Role).FUNCIONARIO.name())")
+    @PreAuthorize("hasAnyRole(T(cursoArquitetura.modulo3.modulo3banco.usuario.Role).ADMIN.name(),T(cursoArquitetura.modulo3.modulo3banco.usuario.Role).FUNCIONARIO.name())")
     public ResponseEntity excluir(@PathVariable("uuid") UUID uuid){
         try {
             service.excluir(uuid);
@@ -59,18 +57,16 @@ public class ContaController {
     }
 
     @GetMapping("/saldo/{uuid}")
-    @PreAuthorize("hasAnyRole(T(cursoArquitetura.modulo3.modulo3banco.usuario.Role).ADMIN.name()," +
-            "T(cursoArquitetura.modulo3.modulo3banco.usuario.Role).FUNCIONARIO.name()" +
-            "T(cursoArquitetura.modulo3.modulo3banco.usuario.Role).USUARIO.name())")
+    @PreAuthorize("hasAnyRole(T(cursoArquitetura.modulo3.modulo3banco.usuario.Role).ADMIN.name(),T(cursoArquitetura.modulo3.modulo3banco.usuario.Role).FUNCIONARIO.name(),T(cursoArquitetura.modulo3.modulo3banco.usuario.Role).CLIENTE.name())")
     public ResponseEntity consultarSaldo(@PathVariable("uuid") UUID uuid){
         return new ResponseEntity<>(service.consutarSaldo(uuid), HttpStatus.OK);
     }
 
     @PostMapping("/sacar")
-    @PreAuthorize("hasAnyRole(T(cursoArquitetura.modulo3.modulo3banco.usuario.Role).USUARIO.name())")
+    @PreAuthorize("hasAnyRole(T(cursoArquitetura.modulo3.modulo3banco.usuario.Role).ADMIN.name(),T(cursoArquitetura.modulo3.modulo3banco.usuario.Role).CLIENTE.name())")
     public ResponseEntity<ContaDTO> sacar(@Valid @RequestBody ContaDTO contaDTO, @RequestHeader (name="Authorization") String bearerToken){
         try {
-            validarUsuario(contaDTO.getUuid(),bearerToken);
+            service.validarUsuario(obterCpfToken(bearerToken),contaDTO);
             return new ResponseEntity<>(service.sacar(contaDTO), HttpStatus.OK);
         } catch (SaldoInsuficienteException e) {
             return new ResponseEntity(e.getMessage(),HttpStatus.BAD_REQUEST);
@@ -80,7 +76,7 @@ public class ContaController {
     }
 
     @PostMapping("/depositar")
-    @PreAuthorize("hasAnyRole(T(cursoArquitetura.modulo3.modulo3banco.usuario.Role).USUARIO.name())")
+    @PreAuthorize("hasAnyRole(T(cursoArquitetura.modulo3.modulo3banco.usuario.Role).ADMIN.name(),T(cursoArquitetura.modulo3.modulo3banco.usuario.Role).CLIENTE.name())")
     public ResponseEntity<ContaDTO> depositar(@Valid @RequestBody ContaDTO contaDTO){
         try {
             return new ResponseEntity<>(service.deposito(contaDTO), HttpStatus.OK);
@@ -90,10 +86,10 @@ public class ContaController {
     }
 
     @PostMapping("/transferir")
-    @PreAuthorize("hasAnyRole(T(cursoArquitetura.modulo3.modulo3banco.usuario.Role).USUARIO.name())")
+    @PreAuthorize("hasAnyRole(T(cursoArquitetura.modulo3.modulo3banco.usuario.Role).ADMIN.name(),T(cursoArquitetura.modulo3.modulo3banco.usuario.Role).CLIENTE.name())")
     public ResponseEntity<ContaDTO> transferir(@Valid @RequestBody ContaDTO contaDTO, @RequestHeader (name="Authorization") String bearerToken){
         try {
-            validarUsuario(contaDTO.getUuid(),bearerToken);
+            service.validarUsuario(obterCpfToken(bearerToken),contaDTO);
             return new ResponseEntity<>(service.transferir(contaDTO), HttpStatus.OK);
         } catch (ValorInvalidoException e) {
             return new ResponseEntity(e.getMessage(),HttpStatus.BAD_REQUEST);
@@ -102,11 +98,10 @@ public class ContaController {
         }
     }
 
-    private void validarUsuario(UUID uuid, String bearerToken){
+    private String obterCpfToken(String bearerToken){
         String token = bearerToken.substring(7);
         Usuario u = (Usuario) jwtService.getUserDetails(token);
-        if(!u.getUuid().equals(uuid)){
-            throw new AccessDeniedException("Apenas o dono da conta pode realizar esta operação");
-        }
+        return u.getCpf();
     }
+
 }

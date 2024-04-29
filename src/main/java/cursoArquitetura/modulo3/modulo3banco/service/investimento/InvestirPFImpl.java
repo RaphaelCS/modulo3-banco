@@ -16,6 +16,7 @@ public interface InvestirPFImpl extends Investir<ClientePF> {
 
     @Override
     default ContaInvestimento investir(ClientePF cliente, ContaCorrente conta, BigDecimal valor) throws ValorInvalidoException, SaldoInsuficienteException {
+        /*
         if(valor.compareTo(BigDecimal.ZERO)<1){
             throw new ValorInvalidoException("Valor menor que zero ou igual a zero");
         }
@@ -30,5 +31,8 @@ public interface InvestirPFImpl extends Investir<ClientePF> {
         //new ContaCorrentePFService().transferir((ClientePF) conta.getCliente(),conta,valor,contaInvestimento);
         contaInvestimento.setSaldo(contaInvestimento.getSaldo().add(valor.multiply(RENDIMENTO)));
         return contaInvestimento;
+
+         */
+        return null;
     }
 }

@@ -37,13 +37,10 @@ public class ClientePFService {
     }
 
     public ClientePFDTO salvar(ClientePFDTO clientePFDTO) throws ValorInvalidoException {
-       /*
-        Date date = Date.valueOf(LocalDate.now().minusYears(18).toString());
-        if(clientePFDTO.getDataNascimento().compareTo(date)>1){
-            throw new ValorInvalidoException("Cliente menor de 18 anos");
+       if(clientePFDTO.getDataNascimento().isAfter(LocalDate.now().minusYears(18))){
+            throw new ValorInvalidoException("Cliente não pode ser menor de 18 anos");
         }
 
-        */
         var cliente = convertFromDto(clientePFDTO);
         cliente.setUuid(UUID.randomUUID());
         cliente.setDataCadastro(LocalDate.now());

@@ -25,6 +25,7 @@ public class Usuario extends Pessoa implements UserDetails {
     private String email;
     @Column(unique = true)
     private String cpf;
+    @Column(unique = true)
     private String username;
     private String password;
     private String telefone;

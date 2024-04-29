@@ -1,5 +1,6 @@
 package cursoArquitetura.modulo3.modulo3banco.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,6 +11,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.UUID;
 
@@ -20,13 +23,14 @@ import java.util.UUID;
 public class ClientePFDTO {
 
     private UUID uuid;
+    @NotNull
     @NotBlank(message = "Nome é obrigatório")
     private String nome;
     @CPF(message = "CPF inválido")
     @NotBlank(message = "CPF é obrigatório")
+    @NotNull
     private String cpf;
-    //todo acertar data nascimento
-//    @DateTimeFormat(pattern = "dd/MM/yyyy")
-//    @NotBlank(message = "Data de nascimento é obrigatória")
-//    private Date dataNascimento;
+    @NotNull
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private LocalDate dataNascimento;
 }
