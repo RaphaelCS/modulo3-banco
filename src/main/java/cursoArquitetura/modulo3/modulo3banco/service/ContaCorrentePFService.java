@@ -5,7 +5,6 @@ import cursoArquitetura.modulo3.modulo3banco.exception.NaoEncontradoException;
 import cursoArquitetura.modulo3.modulo3banco.exception.SaldoExistenteException;
 import cursoArquitetura.modulo3.modulo3banco.exception.SaldoInsuficienteException;
 import cursoArquitetura.modulo3.modulo3banco.exception.ValorInvalidoException;
-import cursoArquitetura.modulo3.modulo3banco.login.JwtService;
 import cursoArquitetura.modulo3.modulo3banco.model.ClientePF;
 import cursoArquitetura.modulo3.modulo3banco.model.ContaCorrente;
 import cursoArquitetura.modulo3.modulo3banco.repository.ClienteRepository;
@@ -14,10 +13,8 @@ import cursoArquitetura.modulo3.modulo3banco.service.consultaSaldo.ConsultaSaldo
 import cursoArquitetura.modulo3.modulo3banco.service.deposito.Deposito;
 import cursoArquitetura.modulo3.modulo3banco.service.saque.SaquePFImpl;
 import cursoArquitetura.modulo3.modulo3banco.service.transferencia.TransferenciaPFImpl;
-import cursoArquitetura.modulo3.modulo3banco.usuario.Usuario;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 

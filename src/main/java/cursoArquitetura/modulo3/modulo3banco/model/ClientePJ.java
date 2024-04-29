@@ -1,9 +1,10 @@
 package cursoArquitetura.modulo3.modulo3banco.model;
 
 
-
-import cursoArquitetura.modulo3.modulo3banco.service.BancoDadosService;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;

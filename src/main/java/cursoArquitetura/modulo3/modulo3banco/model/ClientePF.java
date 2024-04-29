@@ -1,12 +1,14 @@
 package cursoArquitetura.modulo3.modulo3banco.model;
 
 import cursoArquitetura.modulo3.modulo3banco.enums.StatusEnum;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Objects;
 
 @Entity

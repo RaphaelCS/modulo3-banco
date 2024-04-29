@@ -1,11 +1,4 @@
 package cursoArquitetura.modulo3.modulo3banco;
-import cursoArquitetura.modulo3.modulo3banco.model.*;
-import cursoArquitetura.modulo3.modulo3banco.service.ContaCorrentePFService;
-import cursoArquitetura.modulo3.modulo3banco.service.ContaCorrentePJService;
-import cursoArquitetura.modulo3.modulo3banco.service.ContaInvestimentoPFService;
-import cursoArquitetura.modulo3.modulo3banco.service.ContaInvestimentoPJService;
-
-import java.math.BigDecimal;
 
 public class Main {
 

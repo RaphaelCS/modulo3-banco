@@ -1,7 +1,8 @@
 package cursoArquitetura.modulo3.modulo3banco.model;
 
-import cursoArquitetura.modulo3.modulo3banco.service.BancoDadosService;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.math.BigDecimal;

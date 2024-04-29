@@ -1,11 +1,5 @@
 package cursoArquitetura.modulo3.modulo3banco.service;
 
-import cursoArquitetura.modulo3.modulo3banco.model.*;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
 public  class BancoDadosService {
     /*
 

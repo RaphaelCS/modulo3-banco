@@ -2,6 +2,7 @@ package cursoArquitetura.modulo3.modulo3banco.service.deposito;
 
 import cursoArquitetura.modulo3.modulo3banco.exception.ValorInvalidoException;
 import cursoArquitetura.modulo3.modulo3banco.model.Conta;
+
 import java.math.BigDecimal;
 
 public interface Deposito<T extends Conta> {

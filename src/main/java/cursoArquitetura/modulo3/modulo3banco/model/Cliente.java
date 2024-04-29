@@ -1,14 +1,11 @@
 package cursoArquitetura.modulo3.modulo3banco.model;
 
 
-
 import cursoArquitetura.modulo3.modulo3banco.enums.StatusEnum;
 import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 @Entity

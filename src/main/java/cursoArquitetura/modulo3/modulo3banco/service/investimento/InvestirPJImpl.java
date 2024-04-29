@@ -5,8 +5,6 @@ import cursoArquitetura.modulo3.modulo3banco.exception.ValorInvalidoException;
 import cursoArquitetura.modulo3.modulo3banco.model.ClientePJ;
 import cursoArquitetura.modulo3.modulo3banco.model.ContaCorrente;
 import cursoArquitetura.modulo3.modulo3banco.model.ContaInvestimento;
-import cursoArquitetura.modulo3.modulo3banco.service.BancoDadosService;
-import cursoArquitetura.modulo3.modulo3banco.service.ContaCorrentePJService;
 
 import java.math.BigDecimal;
 

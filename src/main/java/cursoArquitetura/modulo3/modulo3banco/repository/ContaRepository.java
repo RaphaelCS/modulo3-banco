@@ -1,8 +1,6 @@
 package cursoArquitetura.modulo3.modulo3banco.repository;
 
-import cursoArquitetura.modulo3.modulo3banco.model.Cliente;
 import cursoArquitetura.modulo3.modulo3banco.model.ClientePF;
-import cursoArquitetura.modulo3.modulo3banco.model.Conta;
 import cursoArquitetura.modulo3.modulo3banco.model.ContaCorrente;
 import org.springframework.data.jpa.repository.JpaRepository;
 

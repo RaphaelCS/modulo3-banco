@@ -1,6 +1,7 @@
 package cursoArquitetura.modulo3.modulo3banco.dto;
 
 import lombok.*;
+
 import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
 import java.util.UUID;
